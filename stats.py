@@ -8,16 +8,22 @@
 import math
 # sum
 def sum_li(n):
-  s = 0
-  for i in range(len(n)):
-    s += n[i]
-  return s
+  if len(n) == 1:
+    return n[0]
+  else:
+    s = 0
+    for i in range(len(n)):
+      s += n[i]
+    return s
 
 def sum_of_sqr(n):
-  t = 0
-  for i in range(len(n)):
-    t = t + (n[i] ** 2)
-  return t
+  if len(n) == 1:
+    return n[0] ** 2
+  else:
+    t = 0
+    for i in range(len(n)):
+      t = t + (n[i] ** 2)
+    return t
 
 # average
 def avg_li(n):
@@ -60,50 +66,65 @@ def mean_sum_of_sqr(n):
   return t
 
 # standard deviation
-def sds_li(n):
+def sdp_li(n):
   sd = math.sqrt(((mean_sum_of_sqr(n)) / len(n)))
   return sd
 
-def sdp_li(n):
-  sd = math.sqrt(((mean_sum_of_sqr(n)) / (len(n) - 1)))
-  return sd
+def sds_li(n):
+  if len(n) == 1:
+    text = "undef"
+    return text
+  else:
+    sd = math.sqrt(((mean_sum_of_sqr(n)) / (len(n) - 1)))
+    return sd
 
 def min_li(n):
   s = sort_li(n)
   return s[0]
 
 def max_li(n):
-  s = sort_li(n)
-  return s[-1]
+  if len(n) == 1:
+    return n[0]
+  else:
+    s = sort_li(n)
+    return s[-1]
 
 def q1_li(n):
-  s = sort_li(n)
-  if even(len(n)) == False:
-  # odd num array
-    o = s[slice(0,((len(s) // 2)))]
-    q1 = mean_li(o)
+  if len(n) == 1:
+    return n[0]
   else:
-  # even num array
-    e = s[slice(0,int(len(s) / 2))]
-    q1 = mean_li(e)
-  return q1
+    s = sort_li(n)
+    if even(len(n)) == False:
+    # odd num array
+      o = s[slice(0,((len(s) // 2)))]
+      q1 = mean_li(o)
+    else:
+    # even num array
+      e = s[slice(0,int(len(s) / 2))]
+      q1 = mean_li(e)
+    return q1
 
 def q3_li(n):
-  s = sort_li(n)
-  if even(len(n)) == False:
-  # odd num array
-    o = s[slice(((len(s) // 2) + 1),len(s))]
-    q3 = mean_li(o)
+  if len(n) == 1:
+    return n[0]
+  elif len(n) == 2:
+    return n[1]
   else:
-  # even num array
-    e = s[slice(int((len(s) / 2) + 1),len(s))]
-    q3 = mean_li(e)
-  return q3
+    s = sort_li(n)
+    if even(len(n)) == False:
+    # odd num array
+      o = s[slice(((len(s) // 2) + 1),len(s))]
+      q3 = mean_li(o)
+    else:
+    # even num array
+      e = s[slice(int((len(s) / 2) + 1),len(s))]
+      q3 = mean_li(e)
+    return q3
 
 def stats(n):
   print("Average = "+str(avg_li(n)))
   print("Sum = "+str(sum_li(n)))
-  print("Square of Sum = "+str(sum_of_sqr(n)))
+  print("Sum of Square = "+str(sum_of_sqr(n)))
   print("SD of Population = "+str(sdp_li(n)))
   print("SD of Sample = "+str(sds_li(n)))
   print("n = "+str(len(n)))
