@@ -121,7 +121,8 @@ def q3_li(n):
       q3 = mean_li(e)
     return q3
 
-def stats(n):
+def var_stats(n):
+  print("Data = "+str(sort_li(n)))
   print("Average = "+str(avg_li(n)))
   print("Sum = "+str(sum_li(n)))
   print("Sum of Square = "+str(sum_of_sqr(n)))
@@ -135,7 +136,7 @@ def stats(n):
   print("max = "+str(max_li(n)))
   
 li = [3.32,2.53,3.45,2.38,3.01]
-stats(li)
+var_stats(li)
 
 # Output
 #
